@@ -1,0 +1,913 @@
+{
+  "service": {
+    "service": "basic-lambda-dynamodb",
+    "serviceObject": {
+      "name": "basic-lambda-dynamodb"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs18.x",
+      "region": "ap-south-1",
+      "environment": {
+        "USERS_TABLE": "usersTable"
+      },
+      "role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user",
+      "deploymentBucket": "testtask5bucket",
+      "stage": "dev",
+      "versionFunctions": true,
+      "deploymentBucketObject": {
+        "name": "testtask5bucket"
+      },
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "AddUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/basic-lambda-dynamodb-dev-addUser"
+            }
+          },
+          "ListUsersLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/basic-lambda-dynamodb-dev-listUsers"
+            }
+          },
+          "GetUserByIdLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/basic-lambda-dynamodb-dev-getUserById"
+            }
+          },
+          "UpdateUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/basic-lambda-dynamodb-dev-updateUser"
+            }
+          },
+          "DeleteUserLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/basic-lambda-dynamodb-dev-deleteUser"
+            }
+          },
+          "AddUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "testtask5bucket",
+                "S3Key": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z/basic-lambda-dynamodb.zip"
+              },
+              "Handler": "dist/handler.addUser",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "basic-lambda-dynamodb-dev-addUser",
+              "MemorySize": 1024,
+              "Timeout": 10,
+              "Environment": {
+                "Variables": {
+                  "USERS_TABLE": "usersTable"
+                }
+              },
+              "Role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user"
+            },
+            "DependsOn": [
+              "AddUserLogGroup"
+            ]
+          },
+          "ListUsersLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "testtask5bucket",
+                "S3Key": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z/basic-lambda-dynamodb.zip"
+              },
+              "Handler": "dist/handler.listUsers",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "basic-lambda-dynamodb-dev-listUsers",
+              "MemorySize": 1024,
+              "Timeout": 10,
+              "Environment": {
+                "Variables": {
+                  "USERS_TABLE": "usersTable"
+                }
+              },
+              "Role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user"
+            },
+            "DependsOn": [
+              "ListUsersLogGroup"
+            ]
+          },
+          "GetUserByIdLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "testtask5bucket",
+                "S3Key": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z/basic-lambda-dynamodb.zip"
+              },
+              "Handler": "dist/handler.getUserById",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "basic-lambda-dynamodb-dev-getUserById",
+              "MemorySize": 1024,
+              "Timeout": 10,
+              "Environment": {
+                "Variables": {
+                  "USERS_TABLE": "usersTable"
+                }
+              },
+              "Role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user"
+            },
+            "DependsOn": [
+              "GetUserByIdLogGroup"
+            ]
+          },
+          "UpdateUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "testtask5bucket",
+                "S3Key": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z/basic-lambda-dynamodb.zip"
+              },
+              "Handler": "dist/handler.updateUser",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "basic-lambda-dynamodb-dev-updateUser",
+              "MemorySize": 1024,
+              "Timeout": 10,
+              "Environment": {
+                "Variables": {
+                  "USERS_TABLE": "usersTable"
+                }
+              },
+              "Role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user"
+            },
+            "DependsOn": [
+              "UpdateUserLogGroup"
+            ]
+          },
+          "DeleteUserLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": "testtask5bucket",
+                "S3Key": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z/basic-lambda-dynamodb.zip"
+              },
+              "Handler": "dist/handler.deleteUser",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "basic-lambda-dynamodb-dev-deleteUser",
+              "MemorySize": 1024,
+              "Timeout": 10,
+              "Environment": {
+                "Variables": {
+                  "USERS_TABLE": "usersTable"
+                }
+              },
+              "Role": "arn:aws:iam::877135268924:role/aws-lambda-arul-trusted-user"
+            },
+            "DependsOn": [
+              "DeleteUserLogGroup"
+            ]
+          },
+          "AddUserLambdaVersionk7Cq0incfhCwfLmYNauzwKm6UvIzZkxn5dpe0KPal0": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "AddUserLambdaFunction"
+              },
+              "CodeSha256": "dSNHYbhTam+uYd3D7HoxRxwjUrhR2o7An92/iCH5vxI="
+            }
+          },
+          "ListUsersLambdaVersionItesANFInaCieyxtTd4Fro148wdAMKyGnTOreYmr8": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ListUsersLambdaFunction"
+              },
+              "CodeSha256": "dSNHYbhTam+uYd3D7HoxRxwjUrhR2o7An92/iCH5vxI="
+            }
+          },
+          "GetUserByIdLambdaVersionsxNiiKoYHH584E8ecwmFyBlXXVnGKZ4eL8oyndDQ": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetUserByIdLambdaFunction"
+              },
+              "CodeSha256": "dSNHYbhTam+uYd3D7HoxRxwjUrhR2o7An92/iCH5vxI="
+            }
+          },
+          "UpdateUserLambdaVersionAnczWLwFWzb3fmoDBSklizH1t1l35mmx0IkAwAK2bM": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "UpdateUserLambdaFunction"
+              },
+              "CodeSha256": "dSNHYbhTam+uYd3D7HoxRxwjUrhR2o7An92/iCH5vxI="
+            }
+          },
+          "DeleteUserLambdaVersionkIPtAp4N0ExCVXEzabmx3loqUdgl1s7bpzXMhmp2w4": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "DeleteUserLambdaFunction"
+              },
+              "CodeSha256": "dSNHYbhTam+uYd3D7HoxRxwjUrhR2o7An92/iCH5vxI="
+            }
+          },
+          "ApiGatewayRestApi": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+              "Name": "dev-basic-lambda-dynamodb",
+              "EndpointConfiguration": {
+                "Types": [
+                  "EDGE"
+                ]
+              },
+              "Policy": ""
+            }
+          },
+          "ApiGatewayResourceUser": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "user",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceUserIdVar": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Ref": "ApiGatewayResourceUser"
+              },
+              "PathPart": "{id}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayResourceUsers": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "users",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodUserPost": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "POST",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUser"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "AddUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "AddUserLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodUsersGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUsers"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "ListUsersLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "ListUsersLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodUserIdVarGet": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "GET",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GetUserByIdLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "GetUserByIdLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodUserIdVarPut": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "PUT",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "UpdateUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "UpdateUserLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayMethodUserIdVarDelete": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "DELETE",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceUserIdVar"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "DeleteUserLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            },
+            "DependsOn": [
+              "DeleteUserLambdaPermissionApiGateway"
+            ]
+          },
+          "ApiGatewayDeployment1744698837407": {
+            "Type": "AWS::ApiGateway::Deployment",
+            "Properties": {
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "StageName": "dev"
+            },
+            "DependsOn": [
+              "ApiGatewayMethodUserPost",
+              "ApiGatewayMethodUsersGet",
+              "ApiGatewayMethodUserIdVarGet",
+              "ApiGatewayMethodUserIdVarPut",
+              "ApiGatewayMethodUserIdVarDelete"
+            ]
+          },
+          "AddUserLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "AddUserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "ListUsersLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ListUsersLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "GetUserByIdLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetUserByIdLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "UpdateUserLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "UpdateUserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "DeleteUserLambdaPermissionApiGateway": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "DeleteUserLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "ApiGatewayRestApi"
+                    },
+                    "/*/*"
+                  ]
+                ]
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "testtask5bucket",
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-ServerlessDeploymentBucketName"
+            }
+          },
+          "AddUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "AddUserLambdaVersionk7Cq0incfhCwfLmYNauzwKm6UvIzZkxn5dpe0KPal0"
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-AddUserLambdaFunctionQualifiedArn"
+            }
+          },
+          "ListUsersLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ListUsersLambdaVersionItesANFInaCieyxtTd4Fro148wdAMKyGnTOreYmr8"
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-ListUsersLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetUserByIdLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetUserByIdLambdaVersionsxNiiKoYHH584E8ecwmFyBlXXVnGKZ4eL8oyndDQ"
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-GetUserByIdLambdaFunctionQualifiedArn"
+            }
+          },
+          "UpdateUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "UpdateUserLambdaVersionAnczWLwFWzb3fmoDBSklizH1t1l35mmx0IkAwAK2bM"
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-UpdateUserLambdaFunctionQualifiedArn"
+            }
+          },
+          "DeleteUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "DeleteUserLambdaVersionkIPtAp4N0ExCVXEzabmx3loqUdgl1s7bpzXMhmp2w4"
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-DeleteUserLambdaFunctionQualifiedArn"
+            }
+          },
+          "ServiceEndpoint": {
+            "Description": "URL of the service endpoint",
+            "Value": {
+              "Fn::Join": [
+                "",
+                [
+                  "https://",
+                  {
+                    "Ref": "ApiGatewayRestApi"
+                  },
+                  ".execute-api.",
+                  {
+                    "Ref": "AWS::Region"
+                  },
+                  ".",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/dev"
+                ]
+              ]
+            },
+            "Export": {
+              "Name": "sls-basic-lambda-dynamodb-dev-ServiceEndpoint"
+            }
+          }
+        }
+      },
+      "vpc": {}
+    },
+    "plugins": [
+      "serverless-offline"
+    ],
+    "pluginsData": {},
+    "functions": {
+      "addUser": {
+        "handler": "dist/handler.addUser",
+        "timeout": 10,
+        "events": [
+          {
+            "http": {
+              "path": "user",
+              "method": "post",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "basic-lambda-dynamodb-dev-addUser",
+        "package": {},
+        "memory": 1024,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "AddUserLambdaVersionk7Cq0incfhCwfLmYNauzwKm6UvIzZkxn5dpe0KPal0"
+      },
+      "listUsers": {
+        "handler": "dist/handler.listUsers",
+        "timeout": 10,
+        "events": [
+          {
+            "http": {
+              "path": "users",
+              "method": "get",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "basic-lambda-dynamodb-dev-listUsers",
+        "package": {},
+        "memory": 1024,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "ListUsersLambdaVersionItesANFInaCieyxtTd4Fro148wdAMKyGnTOreYmr8"
+      },
+      "getUserById": {
+        "handler": "dist/handler.getUserById",
+        "timeout": 10,
+        "events": [
+          {
+            "http": {
+              "path": "user/{id}",
+              "method": "get",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "basic-lambda-dynamodb-dev-getUserById",
+        "package": {},
+        "memory": 1024,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "GetUserByIdLambdaVersionsxNiiKoYHH584E8ecwmFyBlXXVnGKZ4eL8oyndDQ"
+      },
+      "updateUser": {
+        "handler": "dist/handler.updateUser",
+        "timeout": 10,
+        "events": [
+          {
+            "http": {
+              "path": "user/{id}",
+              "method": "put",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "basic-lambda-dynamodb-dev-updateUser",
+        "package": {},
+        "memory": 1024,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "UpdateUserLambdaVersionAnczWLwFWzb3fmoDBSklizH1t1l35mmx0IkAwAK2bM"
+      },
+      "deleteUser": {
+        "handler": "dist/handler.deleteUser",
+        "timeout": 10,
+        "events": [
+          {
+            "http": {
+              "path": "user/{id}",
+              "method": "delete",
+              "integration": "AWS_PROXY"
+            }
+          }
+        ],
+        "name": "basic-lambda-dynamodb-dev-deleteUser",
+        "package": {},
+        "memory": 1024,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "DeleteUserLambdaVersionkIPtAp4N0ExCVXEzabmx3loqUdgl1s7bpzXMhmp2w4"
+      }
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless",
+    "initialServerlessConfig": {
+      "service": "basic-lambda-dynamodb",
+      "frameworkVersion": "4",
+      "plugins": {
+        "$ref": "$[\"service\"][\"plugins\"]"
+      },
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "functions": {
+        "$ref": "$[\"service\"][\"functions\"]"
+      }
+    },
+    "appId": null,
+    "orgId": null,
+    "layers": {},
+    "artifact": "F:\\test\\task_6\\.serverless\\basic-lambda-dynamodb.zip"
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/basic-lambda-dynamodb/dev/1744698850783-2025-04-15T06:34:10.783Z",
+    "artifact": "basic-lambda-dynamodb.zip"
+  }
+}

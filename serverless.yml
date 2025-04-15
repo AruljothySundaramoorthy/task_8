@@ -1,0 +1,55 @@
+service: basic-lambda-dynamodb
+
+frameworkVersion: "4"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  environment:
+    USERS_TABLE: usersTable
+  role: ${env:SERVERLESSROLE}
+  deploymentBucket:
+    name: testtask5bucket
+
+functions:
+  addUser:
+    handler: dist/handler.addUser
+    timeout: 10
+    events:
+      - http:
+          path: user
+          method: post
+
+  listUsers:
+    handler: dist/handler.listUsers
+    timeout: 10
+    events:
+      - http:
+          path: users
+          method: get
+
+  getUserById:
+    handler: dist/handler.getUserById
+    timeout: 10
+    events:
+      - http:
+          path: user/{id}
+          method: get
+  updateUser:
+    handler: dist/handler.updateUser
+    timeout: 10
+    events:
+      - http:
+          path: user/{id}
+          method: put
+  deleteUser:
+    handler: dist/handler.deleteUser
+    timeout: 10
+    events:
+      - http:
+          path: user/{id}
+          method: delete
